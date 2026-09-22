@@ -100,11 +100,26 @@ data/raw/otm_2026.csv      (one row per program×language×form: quotas and cut-
   -> 05: data understanding (read-only)
   -> 06: drop duplicates and no-quota rows, merge TDIU "Davlat auditi" key collision (quotas summed),
          0 score -> NaN where quota is 0, add `asosiy_yunalish`/`tuman_kvotasi`/`tuman`, attach
-         `1-fan`/`2-fan`/`fanlar_juftligi` (source recorded in `fan_moslik`)
-  -> data/processed/otm_prepared.csv    (5,547 × 16)
+         `1-fan`/`2-fan`/`fanlar_juftligi` (source recorded in `fan_moslik`), derive competition markets
+         (`bozor`) from co-applications in abiturents.csv
+  -> data/processed/otm_prepared.csv    (5,547 × 17)  +  data/processed/bozorlar.csv (juftlik -> bozor)
+
+FEATURES
+07: abiturents.csv + otm_prepared + bozorlar -> every applicant assigned to one market
+  -> data/processed/nomzodlar.csv       (357,561: ID, bozor, toplagan_bali)
+  -> market features, group-within-market features, relative targets (`grant_ulush`, `shartnoma_ulush`)
+  -> data/processed/model_data.csv      (5,547 × 31)
 ```
 
-The two prepared tables connect **only through `fanlar_juftligi`**. Subject lookup in `06` is, in order:
+**Competition unit is the `bozor`, not `fanlar_juftligi`.** An applicant has one score for all choices and
+may apply to several subject pairs (e.g. `Matematika + Fizika` and `Fizika + Matematika`, or `Ingliz tili +
+Ona tili` and `Chet tili + Ona tili`). Pairs sharing ≥ 30 applicants are merged by union-find: 38 pairs →
+32 markets, and every applicant's choices fall in exactly one market. `abts_prepared.csv` (from `04`) lacks
+12,860 applicants whose programs `01` could not match — use `nomzodlar.csv` for anything competition-related.
+Subject aliases normalized everywhere: `Kasbiy (ijodiy) imtihon` → `Kasbiy (ijodiy imtihon)`,
+`Oʻzbek tili va adabiyoti` → `Ona tili va adabiyoti`.
+
+The two OTM-side tables connect to applicants **only through `bozor`**. Subject lookup in `06` is, in order:
 exact match on a normalized name (lowercase, unified apostrophes, parentheses stripped) against the Fanlar
 majmuasi xlsx; a small typo dictionary; `references/kirish_imtihon_fanlari.md` for 14 new 2026 programs
 (parsed as Markdown tables; where it says "Fizika (yoki …)", the first option is used — user-confirmed);
