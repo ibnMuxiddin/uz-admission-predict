@@ -1,0 +1,11 @@
+# Maxfiy kalitlar
+.env
+
+# Virtual muhit va kesh
+venv/
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+
+# Ma'lumotlar (katta hajmli, skreyperlar orqali qayta yaratiladi)
+/data/
