@@ -1,0 +1,17 @@
+tur,bolish,model,MAE,RMSE,<=5 ball,<=10 ball
+grant,GroupKFold (OTM),median,9.612,17.371,0.567,0.716
+grant,GroupKFold (OTM),chegara,23.352,33.734,0.237,0.423
+grant,GroupKFold (OTM),xgb_ball,9.844,14.933,0.436,0.654
+grant,GroupKFold (OTM),xgb_ulush,9.376,15.251,0.506,0.703
+grant,KFold (tasodifiy),median,9.307,16.917,0.583,0.723
+grant,KFold (tasodifiy),chegara,23.352,33.734,0.237,0.423
+grant,KFold (tasodifiy),xgb_ball,8.579,13.808,0.512,0.726
+grant,KFold (tasodifiy),xgb_ulush,8.126,14.06,0.575,0.757
+shartnoma,GroupKFold (OTM),median,16.329,26.971,0.433,0.571
+shartnoma,GroupKFold (OTM),chegara,20.281,30.997,0.381,0.499
+shartnoma,GroupKFold (OTM),xgb_ball,13.105,20.727,0.433,0.596
+shartnoma,GroupKFold (OTM),xgb_ulush,13.113,22.488,0.496,0.633
+shartnoma,KFold (tasodifiy),median,15.801,25.728,0.442,0.573
+shartnoma,KFold (tasodifiy),chegara,20.281,30.997,0.381,0.499
+shartnoma,KFold (tasodifiy),xgb_ball,12.734,20.032,0.439,0.604
+shartnoma,KFold (tasodifiy),xgb_ulush,12.562,21.711,0.504,0.648
