@@ -9,3 +9,6 @@ __pycache__/
 
 # Ma'lumotlar (katta hajmli, skreyperlar orqali qayta yaratiladi)
 /data/
+
+# Modellar (08-notebook qayta yaratadi)
+/models/
